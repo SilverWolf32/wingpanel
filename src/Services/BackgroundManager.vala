@@ -122,6 +122,11 @@ namespace Wingpanel.Services {
 
             bus.state_changed.connect ((state, animation_duration) => {
                 current_state = state;
+                // current_state = BackgroundState.LIGHT;
+                if (current_state == BackgroundState.MAXIMIZED) {
+                        current_state = BackgroundState.TRANSLUCENT_LIGHT;
+                }
+                stderr.printf("Services/BackgroundManager: state updated: %d\n", state);
                 state_updated (animation_duration);
             });
 
